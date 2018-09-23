@@ -44,3 +44,33 @@ noMatchForMe match {
   case "We'll see.." => "... next time!"
   case _ => "Gotcha!"
 }
+
+//Vale binding inside match
+"Bind me!" match{
+  case "Nope" => "Sorry"
+  case value => {
+    println(s"$value Here you go ;)")
+    "It works!"
+  }
+}
+
+//Matching with pattern guard
+val response: String = null
+response match {
+  case s if s != null => println(s"Received: $response")
+  case s if s == null => println("Received null response")
+  case _ => "We don't support it"
+}
+
+//Matching Types with Pattern Variables
+val theInt: Int = 12345
+val theAny: Any = theInt
+
+theAny match {
+  case x: String =>s"$x :String"
+  case x: Double => s"$x :Double"
+  case x: Float => s"$x :Float"
+  case x: Long => s"$x :Long"
+  case x: Int => s"$x :Int"
+}
+
